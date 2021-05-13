@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController
 class ScrapperController(private val scrapperService: ScrapperService) {
 
     @GetMapping
-    fun scrapeUrl(@RequestParam url:String): String{
+    fun scrapeUrl(@RequestParam url: String): String {
         return scrapperService.scrapeUrl(url)
     }
 }

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service
 @Service
 class ScrapperService {
     fun scrapeUrl(urlToScrape: String): String {
-        var htmlString: String = ""
+        var htmlString = ""
 
         skrape(HttpFetcher) {
             request {
@@ -17,8 +17,8 @@ class ScrapperService {
             }
 
             expectBlocking {
-                htmlDocument{
-                   htmlString = html
+                htmlDocument {
+                    htmlString = html
                 }
             }
         }
