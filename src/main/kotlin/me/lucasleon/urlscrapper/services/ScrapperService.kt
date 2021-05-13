@@ -2,27 +2,24 @@ package me.lucasleon.urlscrapper.services
 
 import it.skrape.core.htmlDocument
 import it.skrape.fetcher.HttpFetcher
-import it.skrape.fetcher.expectBlocking
+import it.skrape.fetcher.extractItBlocking
 import it.skrape.fetcher.skrape
+import me.lucasleon.urlscrapper.model.dtos.ScrapeResult
 import org.springframework.stereotype.Service
 
 @Service
 class ScrapperService {
-    fun scrapeUrl(urlToScrape: String): String {
-        var htmlString = ""
-
-        skrape(HttpFetcher) {
+    fun scrapeUrl(urlToScrape: String): ScrapeResult {
+        return skrape(HttpFetcher) {
             request {
                 url = urlToScrape
             }
 
-            expectBlocking {
+            extractItBlocking {
                 htmlDocument {
-                    htmlString = html
+                    it.html = html
                 }
             }
         }
-
-        return htmlString
     }
 }
