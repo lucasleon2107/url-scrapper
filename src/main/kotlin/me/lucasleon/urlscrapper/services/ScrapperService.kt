@@ -5,10 +5,13 @@ import it.skrape.fetcher.HttpFetcher
 import it.skrape.fetcher.extractItBlocking
 import it.skrape.fetcher.skrape
 import me.lucasleon.urlscrapper.model.dtos.ScrapeResult
+import org.springframework.cache.annotation.Cacheable
 import org.springframework.stereotype.Service
 
 @Service
 class ScrapperService {
+
+    @Cacheable("scrapeResult")
     fun scrapeUrl(urlToScrape: String): ScrapeResult {
         return skrape(HttpFetcher) {
             request {
