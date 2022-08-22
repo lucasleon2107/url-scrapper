@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController
 class ScrapperController(private val scrapperService: ScrapperService) {
 
     @GetMapping
-    suspend fun scrapeUrl(@RequestParam url: String): ScrapeResult {
+    fun scrapeUrl(@RequestParam url: String): ScrapeResult {
         return scrapperService.scrapeUrl(url)
     }
 }
